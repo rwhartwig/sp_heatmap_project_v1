@@ -2,7 +2,7 @@
 
 This repo containst the assets to build a container to process data from the Spectrum Protect summary table and build a tape heatmap.
 
-The Dockerfile builds a Docker R container to create the heatmap pdf. The container also includes perl to create the csv file that is used to create he heatmap pdf.
+The Dockerfile builds a Docker R container to create the heatmap pdf. The container also includes perl to create the csv file that is used to create the heatmap pdf.
 
 Contents of the repo:
 
@@ -24,7 +24,7 @@ FROM r-base
 WORKDIR /heatmap_data/scripts
 COPY sample /heatmap_data/sample
 COPY scripts /heatmap_data/scripts
-RUN chmod 755 *.pl
+RUN chmod 755 \*.pl
 RUN Rscript packages.R
 CMD ["bash"]
 
