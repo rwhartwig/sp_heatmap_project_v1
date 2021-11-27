@@ -38,11 +38,12 @@ docker build -t heatmapapp .
 
 This will build a large Docker image ~1.3GB in size.
 
-# Build the Docker container
+# Build and run the Docker container
 
 Start the Docker container using Spectrum Protect data from a directory on your local system.
 
-Example:  
+Example:
+
 docker run -it -v /Users/rhartwig/workspace/ibm/heatmap/heatmapdata:/heatmap_data/work_dir --name heatmap01 heatmapapp
 
 The /Users/rhartwig/workspace/ibm/heatmap/heatmapdata is the local directory that contains the Spectrum Protect instance data. The /heatmap_data/work_dir is the container directory mount to the local directory.
@@ -59,32 +60,26 @@ The /Users/rhartwig/workspace/ibm/heatmap/heatmapdata is the local directory tha
 
 # How to create a heatmap
 
-# Create IBM Cloud Account
+1.  Go to the /heatmap_data/work_dir/< Spectrum Protect instance data > directory.
 
-Click [Here](https://ibm.biz/BdfMKE) to register for your IBM Cloud account. <br>
+2.  Create the normalized.txt file:
 
-There are 3 steps to create your account: <br>
-1- Put your email and password. <br>
-2- You get a verification link with the registered email to verify your account. <br>
-3- Fill the personal information fields. <br>
+$grep -i mount summary.txt | grep -v 9800 | awk -F ',' '{ print $1,$2,$21,$22}' | ../../scripts/mount.pl > normalized.txt
 
-<img width="1188" alt="Screen Shot 2021-05-31 at 11 25 01 AM" src="https://user-images.githubusercontent.com/15332386/120156441-0769d980-c203-11eb-8cb3-29f4a8d5616a.png">
+3.  Create the drives.unique file:
 
-# Assets
+$grep -i mount summary.txt | grep -v 9800 | awk -F ',' '{ print $22}' | awk '{ print $1}' | sort -u > drives.unique
 
-- Presentation slides are available in this repo as a pdf file.
-- Click [Here](https://developer.ibm.com/tutorials/build-and-compare-models-using-ibm-spss-modeler/?mhsrc=ibmsearch_a&mhq=spss) for the Hands-On part that shows all the steps for this workshop. <br>
-- Click [Here](https://ibm.biz/BdfMKX) to fill the survey (We really appreciate any feedback :D) <br>
-- Follow Our [Meetup Page](https://www.meetup.com/IBM-Cloud-MEA/) to get updates on our events <br>
-- Check [IBM Developer](https://developer.ibm.com/) to learn and explore a variety technologies and services that you're interested in <br>
+4.  Create the instane_mount.csv file using the heat_map.pl script:
 
-# Call For Code
+$../../scripts/heat_map.pl > spsample.mount
 
-- Call for Code [Main Page](ibm.biz/callforcode) <br>
-- [FAQs](callforcode.org/faq/) <br> <br>
+This will take some time to process for larger envionments.
 
-Starter Kits:<br>
+5. Remove the first 3 lines from the spsample.mount file:
 
-- [Zero Hunger](https://github.com/Call-for-Code/Solution-Starter-Kit-Hunger-2021#solution-ideas)
-- [Clean Water and Sanitation](https://github.com/Call-for-Code/Solution-Starter-Kit-Water-2021#solution-ideas)
-- [Responsible production and green consumption](https://github.com/Call-for-Code/Solution-Starter-Kit-Production-2021#more-solution-ideas)
+$awk 'NR > 3 { print }' < spsample.mount > spsample_mount.csv
+
+6.  Run the Rscript to create heatmap pdf.
+
+$Rscript ../../scripts/heatmap.R spsample_mount.csv spsample_mount.pdf
