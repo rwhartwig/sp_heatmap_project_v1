@@ -1,5 +1,29 @@
-# Spectrum Protect tape heatmp project v1
+# Spectrum Protect tape heatmap project v1
 This repo containst the assets to build a container to process data from the Spectrum Protect summary table and build a tape heatmap.
+
+Docker R image
+
+
+Dockerfile
+
+FROM r-base
+WORKDIR /heatmap_data/scripts
+COPY sample /heatmap_data/sample
+COPY scripts /heatmap_data/scripts
+RUN chmod 755 *.pl
+RUN Rscript packages.R
+CMD ["bash"]
+
+docker build -t heatmapapp .
+
+/heatmap_data/scripts
+
+-rw-r--r-- 1 root root 1702 Nov 27 20:23 heat_map.pl
+-rw-r--r-- 1 root root  672 Nov 27 20:23 heatmap.R
+-rw-r--r-- 1 root root  884 Nov 27 20:23 mount_5.pl
+-rw-r--r-- 1 root root  866 Nov 27 20:23 mount.pl
+-rw-r--r-- 1 root root   58 Nov 27 20:23 packages.R
+
 
 
 
