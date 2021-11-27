@@ -1,0 +1,12 @@
+library(ggplot2)
+library(reshape2)
+library(plyr)
+library(scales)
+hm <- read.csv(commandArgs(TRUE)[1])
+hm.m <-melt(hm)
+# hm.m<-ddply(hm.m, .(variable), transform,rescale = rescale(value))
+hm.m<-ddply(hm.m, .(variable), transform,rescale = rescale(value,to = c(0, 1), from =c(0,3600)))
+p <- ggplot(hm.m, aes(variable, Drive_name)) + geom_tile(aes(fill = rescale),colour = "white") +  scale_fill_gradient2(low = "white",high = "darkblue",na.value = "grey50")
+p + theme(axis.text.x = element_text(size = rel(0.12), angle = 90)) + theme(axis.text.y = element_text(size = rel(0.6))) + theme(axis.title.x = element_blank())
+ggsave(file=commandArgs(TRUE)[2],width=40, height=40)
+
