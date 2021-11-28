@@ -86,3 +86,20 @@ $awk 'NR > 3 { print }' < spsample.mount > spsample_mount.csv
 ```
 $Rscript ../../scripts/heatmap.R spsample_mount.csv spsample_mount.pdf
 ```
+
+The contains of your instance working directory should look something like this:
+```
+-rw-r--r--  1 root root    54 Nov 27 23:24 drives.unique
+-rw-r--r--  1 root root  6916 Nov 27 23:23 normalized.txt
+-rw-r--r--  1 root root 35099 Nov 27 23:41 Rplots.pdf
+-rw-r--r--  1 root root 27425 Nov 27 23:33 spsample.mount
+-rw-r--r--  1 root root 27382 Nov 27 23:38 spsample_mount.csv
+-rw-r--r--  1 root root 37286 Nov 27 23:41 spsample_mount.pdf - This is the heatmap report
+-rw-r--r--  1 root root  1102 Nov 27 23:21 stgpools.txt
+-rw-r--r--  1 root root 40444 Nov 27 23:21 summary.txt
+-rw-r--r--  1 root root    80 Nov 27 23:21 volumes.txt
+-rw-r--r--  1 root root    80 Nov 27 23:21 volumeusage.txt
+```
+
+
+
