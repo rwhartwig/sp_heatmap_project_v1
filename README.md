@@ -10,7 +10,7 @@ This container was run on a Macbook Pro using Docker Desktop.  The Spectrum Prot
 
 Example:
 
-<img width="1188" alt="Docker FILE SHARE perferences" src="https://github.com/rwhartwig/sp_heatmap_project_v1/tree/main/images/docker_perf_file_share.png">
+<img width="1188" alt="Docker FILE SHARE perferences screen shot" src="https://github.com/rwhartwig/sp_heatmap_project_v1/tree/main/images/docker_perf_file_share.png">
 
 Contents of the repo:
 
