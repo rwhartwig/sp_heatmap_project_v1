@@ -6,9 +6,11 @@ This repo containst the assets to build a container to process data from the Spe
 
 The Dockerfile builds a Docker R container to create the heatmap pdf. The container also includes perl to create the csv file that is used to create the heatmap pdf.
 
-Screen shot
+This container was run on a Macbook Pro using Docker Desktop.  The Spectrum Protect instance data folder is shared to the Docker container under Docker _ Prefermences - Resources - FILE SHARING.  
 
-![test](https://github.com/rwhartwig/sp_heatmap_project_v1/tree/main/images)
+Example:
+
+![Docker FILE SHARE perferences](https://github.com/rwhartwig/sp_heatmap_project_v1/tree/main/images/docker_perf_file_share.png)
 
 Contents of the repo:
 
