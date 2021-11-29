@@ -6,6 +6,10 @@ This repo containst the assets to build a container to process data from the Spe
 
 The Dockerfile builds a Docker R container to create the heatmap pdf. The container also includes perl to create the csv file that is used to create the heatmap pdf.
 
+Screen shot
+
+![test](https://github.com/rwhartwig/sp_heatmap_project_v1/tree/main/images)
+
 Contents of the repo:
 
 Dockerfile - Build the Docker heatmap container
