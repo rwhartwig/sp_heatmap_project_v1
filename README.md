@@ -1,6 +1,6 @@
 # Spectrum Protect tape heatmap project v1
 
-This repo containst the assets to build a container to process data from the Spectrum Protect summary table and build a tape heatmap.
+This repo contains the code to build a container and process data from the Spectrum Protect summary table to build a tape heatmap.
 
 ## Repo contents
 
