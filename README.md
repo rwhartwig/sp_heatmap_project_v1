@@ -10,11 +10,12 @@ Alexander Safonov safonov@ca.ibm.com
 
 This repo contains the code to build a container and process data from the Spectrum Protect summary table to build a tape heatmap.
 
-- Normalized.txt we are creating a file with the start of the tape and end of the tape in UNIX epoch time.
-- drives.unique - Sorted list of tape drives referenced in summary table.
-- Run perl script to create csv with numeric rep of drive busy time per hour (0 idle, 3600 drive busy).
-- Use R to convert csv file into colour coded format
+The various scripts process the data in these steps:
 
+- Create a normalized.txt file with the start and end tape drive operation in UNIX epoch time.
+- Create drives.unique file which sorts the list of tape drives referenced in Spectrum Protect summary table.
+- Run perl scripts to create csv file with numeric representation of tape drive busy time per hour (0 drive idle, 3600 drive busy).
+- Use R to convert csv file into colour coded format.
 
 ## Repo contents
 
