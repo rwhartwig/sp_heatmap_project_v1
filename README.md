@@ -1,11 +1,27 @@
 # Spectrum Protect tape heatmap project v1
 
+Repo and container creator:
+
+Robert Hartwig    rhartwig@ca.ibm.com
+
+Perl and Rscript creator:
+
+Alexander Safonov safonov@ca.ibm.com
+
 This repo contains the code to build a container and process data from the Spectrum Protect summary table to build a tape heatmap.
 
 ## Repo contents
 
 The Dockerfile builds a Docker R container to create the heatmap pdf. The container also includes perl to create the csv file that is used to create the heatmap pdf.
 
+You will need to collect data from the Spectrum Protect DB2 instance that will be used to create the tape heatmap.  Here is the Spectrum Protect admin commands to collect the required data:
+
+```
+$dsmadmc -id=<tsmadmin> -p=<tsmadmin password> -comma -dataonly=yes "select * from SUMMARY" > summary.txt
+$dsmadmc -id=<tsmadmin> -p=<tsmadmin password> -comma -dataonly=yes "select * from VOLUMES" > volumes.txt
+$dsmadmc -id=<tsmadmin> -p=<tsmadmin password> -comma -dataonly=yes "select * from VOLUMEUSAGE" > volumeusage.txt
+$dsmadmc -id=<tsmadmin>  -p=<tsmadmin password> -comma -dataonly=yes "select * from STGPOOLS" > stgpools.txt 
+```
 This container was run on a Macbook Pro using Docker Desktop.  The Spectrum Protect instance data folder is shared to the Docker container under Docker _ Prefermences - Resources - FILE SHARING.  
 
 Example:
