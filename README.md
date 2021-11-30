@@ -130,5 +130,9 @@ The contains of your instance working directory should look something like this:
 -rw-r--r--  1 root root    80 Nov 27 23:21 volumeusage.txt
 ```
 
+## Clean up
+
+When you are finished, type "exit: in the comtainer bash shell.  Then run $docker rm heatmap01 to remove the container and $docker rmi heatmapapp to remove the image from your system.
+
 
 
