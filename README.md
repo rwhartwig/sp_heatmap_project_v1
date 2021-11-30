@@ -25,9 +25,6 @@ You will need to collect data from the Spectrum Protect DB2 instance that will b
 
 ```
 $dsmadmc -id=<tsmadmin> -p=<tsmadmin password> -comma -dataonly=yes "select * from SUMMARY" > summary.txt
-$dsmadmc -id=<tsmadmin> -p=<tsmadmin password> -comma -dataonly=yes "select * from VOLUMES" > volumes.txt
-$dsmadmc -id=<tsmadmin> -p=<tsmadmin password> -comma -dataonly=yes "select * from VOLUMEUSAGE" > volumeusage.txt
-$dsmadmc -id=<tsmadmin>  -p=<tsmadmin password> -comma -dataonly=yes "select * from STGPOOLS" > stgpools.txt 
 ```
 This container was run on a Macbook Pro using Docker Desktop.  The Spectrum Protect instance data folder is shared to the Docker container under Docker _ Prefermences - Resources - FILE SHARING.  
 
@@ -124,10 +121,7 @@ The contains of your instance working directory should look something like this:
 -rw-r--r--  1 root root 27425 Nov 27 23:33 spsample.mount
 -rw-r--r--  1 root root 27382 Nov 27 23:38 spsample_mount.csv
 -rw-r--r--  1 root root 37286 Nov 27 23:41 spsample_mount.pdf - This is the heatmap report
--rw-r--r--  1 root root  1102 Nov 27 23:21 stgpools.txt
 -rw-r--r--  1 root root 40444 Nov 27 23:21 summary.txt
--rw-r--r--  1 root root    80 Nov 27 23:21 volumes.txt
--rw-r--r--  1 root root    80 Nov 27 23:21 volumeusage.txt
 ```
 
 ## Clean up
