@@ -90,11 +90,12 @@ The /Users/rhartwig/workspace/ibm/heatmap/heatmapdata is the local directory tha
 
 1.  Go to the /heatmap_data/work_dir/< Spectrum Protect instance data > directory.
 
-2.  Create the normalized.txt file:
+2.  Create the normalized.txt file.  This file lists the length of tape drive active using summary.txt.  The grep -v 9800 parameter
+    removed VTL tape drives from a Dell/EMC Data Domain 9800.
 ```
 grep -i mount summary.txt | grep -v 9800 | awk -F ',' '{ print $1,$2,$21,$22}' | ../../scripts/mount.pl > normalized.txt
 ```
-3.  Create the drives.unique file:
+3.  Create the drives.unique file.  This file lists the tapes drives managed by this tape library instnce.
 ```
 grep -i mount summary.txt | grep -v 9800 | awk -F ',' '{ print $22}' | awk '{ print $1}' | sort -u > drives.unique
 ```
