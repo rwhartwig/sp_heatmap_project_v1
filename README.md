@@ -95,11 +95,12 @@ The /Users/rhartwig/workspace/ibm/heatmap/heatmapdata is the local directory tha
 ```
 grep -i mount summary.txt | grep -v 9800 | awk -F ',' '{ print $1,$2,$21,$22}' | ../../scripts/mount.pl > normalized.txt
 ```
-3.  Create the drives.unique file.  This file lists the tapes drives managed by this tape library instnce.
+3.  Create the drives.unique file.  This file lists the tapes drives managed by this tape library instance.
 ```
 grep -i mount summary.txt | grep -v 9800 | awk -F ',' '{ print $22}' | awk '{ print $1}' | sort -u > drives.unique
 ```
-4.  Create the instance_mount csv file using the heat_map.pl script:
+4.  Create the instance_mount csv file using the heat_map.pl script,  This perl script uses the data in the Spectrum Protect summary.txt, 
+    normalize.txt, and drives.uniques and creates a csv file to show the tape drive utilization in 1 hour increments.
 ```
 ../../scripts/heat_map.pl > spsample.mount
 ```
